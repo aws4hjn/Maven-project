@@ -2,83 +2,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome to Jenkins</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(135deg, #2d2d2d, #3b3b3b);
-            color: #fff;
-        }
+  <meta charset="UTF-8">
+  <title>Jenkins | The Coolest CI/CD Tool 😎</title>
+  <style>
+    /* Background animation */
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        .card {
-            background: #ffffff10;
-            backdrop-filter: blur(8px);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            width: 400px;
-            animation: fadeIn 1.2s ease;
-        }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #ff3c3c, #ff9a00, #007bff, #6610f2);
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+      color: #fff;
+    }
 
-        .card img {
-            width: 160px;
-            height: auto;
-            margin-bottom: 20px;
-            transition: transform 0.4s ease;
-        }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
 
-        .card img:hover {
-            transform: scale(1.1) rotate(2deg);
-        }
+    .glass-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 45px rgba(0, 0, 0, 0.6);
+    }
 
-        h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            color: #ffcc00;
-        }
+    .glass-card img {
+      width: 180px;
+      height: auto;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4));
+      transition: transform 0.4s ease;
+    }
 
-        p {
-            color: #ddd;
-            font-size: 1rem;
-            margin-top: 10px;
-        }
+    .glass-card img:hover {
+      transform: rotate(5deg) scale(1.1);
+    }
 
-        .btn {
-            display: inline-block;
-            margin-top: 25px;
-            background: #ffcc00;
-            color: #333;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #ffeb3b;
+    }
 
-        .btn:hover {
-            background: #ffdb4d;
-        }
+    p {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    .btn {
+      margin-top: 25px;
+      background: linear-gradient(90deg, #ff9800, #ffc107);
+      border: none;
+      color: #000;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #ffc107, #ff9800);
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(255, 193, 7, 0.7);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <!-- Jenkins official logo from Wikimedia -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Jenkins_logo.svg" alt="Jenkins Logo">
-        <h1>Welcome to Jenkins</h1>
-        <p>Your Continuous Integration and Deployment Companion 🚀</p>
-        <a class="btn" href="https://www.jenkins.io/" target="_blank">Visit Jenkins.io</a>
-    </div>
+  <div class="glass-card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Jenkins_logo.svg" alt="Jenkins Logo">
+    <h1>Welcome to Jenkins</h1>
+    <p>The Powerhouse of Continuous Integration and Deployment 🚀</p>
+    <a href="https://www.jenkins.io/" target="_blank" class="btn">Explore Jenkins</a>
+  </div>
+
+  <footer>💻 Designed by Nagesh Achar | Powered by JSP</footer>
 </body>
 </html>
+
