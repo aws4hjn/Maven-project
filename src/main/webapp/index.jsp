@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>ಕರ್ನಾಟಕ ಪುಟ</title>
 <style>
-/* Gradient animated background */
+/* Animated gradient background */
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -37,7 +37,7 @@ body {
     box-shadow: 0 12px 45px rgba(0,0,0,0.6);
 }
 .glass-card img {
-    width:180px;
+    width:250px;
     height:auto;
     margin-bottom:25px;
     border-radius:10px;
@@ -77,14 +77,16 @@ footer {
 </head>
 <body>
 <div class="glass-card">
-    <!-- Karnataka flag -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Karnataka.png" alt="Karnataka Flag">
-
+    <!-- Karnataka Flag -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_Karnataka.png/320px-Flag_of_Karnataka.png" 
+         alt="Karnataka Flag">
+    
     <!-- Kannada Text -->
     <h1>ಕರ್ನಾಟಕ ರಾಜ್ಯಕ್ಕೆ ಸ್ವಾಗತ</h1>
     <p>ನಿಮ್ಮು ಸ್ವಾಗತ ನಮ್ಮ ವೆಬ್ ಪುಟಕ್ಕೆ 🚀</p>
     <a href="#" class="btn">ಹೆಲೋ ಹೇಳಿ!</a>
 </div>
+
 <footer>💻 ವಿನ್ಯಾಸ: H J Nagesh | JSP ನಲ್ಲಿ ಶಕ್ತಿ</footer>
 </body>
 </html>
