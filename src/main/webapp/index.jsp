@@ -123,7 +123,7 @@ function refreshStatus() {
 
   <div class="card">
     <h2>RDS Database</h2>
-    <p>DB Engine: MySQL 8.0</p>
+    <p>DB Engine: MySQL 9.0</p>
     <p>Connection: <span class="status">Active</span></p>
   </div>
 
