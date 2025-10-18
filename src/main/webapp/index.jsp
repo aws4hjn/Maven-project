@@ -1,97 +1,152 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="kn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ಕರ್ನಾಟಕ ಪುಟ</title>
+<title>TechOps Cloud Monitoring Dashboard</title>
 <style>
-/* Animated gradient background */
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
 body {
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family: 'Noto Sans Kannada', sans-serif;
-    background: linear-gradient(-45deg,#ffcc00,#ff0000,#008000,#0000ff);
-    background-size:400% 400%;
-    animation: gradientMove 12s ease infinite;
-    color:#fff;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+  color: #e0e0e0;
+  overflow-x: hidden;
 }
-.glass-card {
-    background: rgba(255,255,255,0.15);
-    border-radius:20px;
-    padding:50px 40px;
-    text-align:center;
-    box-shadow:0 8px 40px rgba(0,0,0,0.4);
-    backdrop-filter: blur(10px);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+header {
+  background: rgba(0,0,0,0.5);
+  padding: 20px 40px;
+  text-align: center;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: #00e676;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
-.glass-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 45px rgba(0,0,0,0.6);
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 50px;
 }
-.glass-card img {
-    width:250px;
-    height:auto;
-    margin-bottom:25px;
-    border-radius:10px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.3);
+
+.card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: 0.4s;
+  backdrop-filter: blur(10px);
 }
-h1 {
-    font-size:2rem;
-    margin-bottom:10px;
-    color:#ffeb3b;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
 }
-p {
-    font-size:1.1rem;
-    color:#e0e0e0;
+
+.card h2 {
+  color: #00bcd4;
+  margin-bottom: 10px;
 }
-.btn {
-    margin-top:25px;
-    background:linear-gradient(90deg,#ff9800,#ffc107);
-    border:none; color:#000; padding:12px 30px;
-    font-size:1rem; font-weight:bold; border-radius:30px;
-    text-decoration:none; cursor:pointer; display:inline-block;
-    box-shadow:0 4px 15px rgba(255,193,7,0.4);
-    transition: all 0.3s ease;
+
+.status {
+  font-size: 1.1rem;
+  color: #fff;
+  background: linear-gradient(90deg, #00c853, #64dd17);
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
 }
-.btn:hover {
-    background: linear-gradient(90deg,#ffc107,#ff9800);
-    transform: scale(1.1);
-    box-shadow:0 6px 25px rgba(255,193,7,0.7);
+@keyframes pulse {
+  0% {opacity: 1;}
+  50% {opacity: 0.6;}
+  100% {opacity: 1;}
 }
-footer {
-    position: absolute;
-    bottom: 10px;
-    font-size:0.9rem;
-    color: rgba(255,255,255,0.8);
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+button {
+  margin-top: 15px;
+  background: linear-gradient(90deg, #00e5ff, #00bcd4);
+  border: none;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(90deg, #00bcd4, #00e5ff);
 }
 </style>
+
+<script>
+function refreshStatus() {
+  const statusEl = document.getElementById("sysStatus");
+  const rand = Math.random();
+  if(rand > 0.7) {
+    statusEl.innerText = "Warning";
+    statusEl.style.background = "linear-gradient(90deg, #ff9800, #ffc107)";
+  } else if(rand < 0.3) {
+    statusEl.innerText = "Down";
+    statusEl.style.background = "linear-gradient(90deg, #d50000, #ff1744)";
+  } else {
+    statusEl.innerText = "Healthy";
+    statusEl.style.background = "linear-gradient(90deg, #00c853, #64dd17)";
+  }
+}
+</script>
 </head>
 <body>
-<div class="glass-card">
-    <!-- Karnataka Flag -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_Karnataka.png/320px-Flag_of_Karnataka.png" 
-         alt="Karnataka Flag">
-    
-    <!-- Kannada Text -->
-    <h1>ಕರ್ನಾಟಕ ರಾಜ್ಯಕ್ಕೆ ಸ್ವಾಗತ</h1>
-    <p>ನಿಮ್ಮು ಸ್ವಾಗತ ನಮ್ಮ ವೆಬ್ ಪುಟಕ್ಕೆ 🚀</p>
-    <a href="#" class="btn">ಹೆಲೋ ಹೇಳಿ!</a>
+
+<header>🚀 Cloud & DevOps TechOps Dashboard</header>
+
+<div class="dashboard">
+  <div class="card">
+    <h2>EC2 Instance Status</h2>
+    <p>Region: ap-south-1</p>
+    <p>Status: <span id="sysStatus" class="status">Healthy</span></p>
+    <button onclick="refreshStatus()">Check Status</button>
+  </div>
+
+  <div class="card">
+    <h2>RDS Database</h2>
+    <p>DB Engine: MySQL 8.0</p>
+    <p>Connection: <span class="status">Active</span></p>
+  </div>
+
+  <div class="card">
+    <h2>S3 Storage</h2>
+    <p>Total Buckets: 3</p>
+    <p>Storage Used: 4.2 GB</p>
+  </div>
+
+  <div class="card">
+    <h2>CloudWatch Billing</h2>
+    <p>Current Cost: $0.75</p>
+    <p>Alarm: <span class="status">Configured</span></p>
+  </div>
+
+  <div class="card">
+    <h2>IAM Security</h2>
+    <p>MFA Enabled: Yes</p>
+    <p>Root Access: Disabled</p>
+  </div>
 </div>
 
-<footer>💻 ವಿನ್ಯಾಸ: H J Nagesh | JSP ನಲ್ಲಿ ಶಕ್ತಿ</footer>
+<div class="footer">© 2025 | Developed by H J Nagesh | TechOps Monitoring Dashboard</div>
+
 </body>
 </html>
-
-
-
-
-
