@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>One-Click Deployment — Mr.Nagesh</title>
+  <title>One-Click Deployment — Nagesh on 18-10-2025</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <meta name="description" content="One-click deployment demo site built for Jenkins + Tomcat pipeline." />
 
