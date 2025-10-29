@@ -11,7 +11,8 @@
         <h1>🌅 Daily Motivation</h1>
         <%
             String[] quotes = {
-                "Believe you can and you're halfway there.",
+            "This is nagesh Jenkins test jobs"    
+	    "Believe you can and you're halfway there.",
                 "The best way to get started is to quit talking and begin doing.",
                 "Don’t let yesterday take up too much of today.",
                 "It always seems impossible until it’s done.",
