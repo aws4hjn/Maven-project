@@ -1,77 +1,62 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="kn">
 <head>
-    <title>Welcome to Nagesh’s World 🌎</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <style>
+        /* Ensures a widely-supported font is used for Kannada text */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;700&display=swap');
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: rgba(0, 0, 0, 0.2);
-            text-align: center;
-            padding: 50px 20px;
-        }
-        header h1 {
-            font-size: 48px;
-            margin: 0;
-            letter-spacing: 2px;
-        }
-        header p {
-            font-size: 20px;
-            margin-top: 10px;
-            color: #dcdcdc;
-        }
-        .container {
-            text-align: center;
-            padding: 50px 20px;
-        }
-        .btn {
-            background: white;
-            color: #764ba2;
-            border: none;
-            padding: 15px 30px;
-            margin-top: 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #f5f5f5;
-            transform: scale(1.05);
-        }
-        footer {
-            background: rgba(0, 0, 0, 0.3);
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            color: #ddd;
+            font-family: 'Noto Sans Kannada', sans-serif;
         }
     </style>
+    
+    <title>ನಮ್ಮ ಕನ್ನಡ ಜಾಲತಾಣ</title> 
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-    <h1>Welcome to Nagesh’s DevOps World 🚀</h1>
-    <p>Continuous Integration | Continuous Deployment | Automation | Cloud</p>
-</header>
 
-<div class="container">
-    <h2>Hello, DevOps Enthusiast 👋</h2>
-    <p>This is a simple JSP page deployed on Apache Tomcat using Jenkins CI/CD pipeline.</p>
-    <button class="btn" onclick="alert('Keep Learning, Keep Growing 🌱!')">Click Me</button>
-</div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.jsp">ಮುಖಪುಟ (Home)</a></li>
+                <li><a href="about.jsp">ನಮ್ಮ ಬಗ್ಗೆ (About Us)</a></li>
+                <li><a href="contact.jsp">ಸಂಪರ್ಕಿಸಿ (Contact)</a></li>
+            </ul>
+        </nav>
+        <h1>ಸಮೃದ್ಧ ಕನ್ನಡಕ್ಕೆ ಸುಸ್ವಾಗತ</h1>
+        <p>ಜಾವಾ ಸರ್ವರ್ ಪುಟಗಳನ್ನು (JSP) ಬಳಸಿಕೊಂಡು ರಚಿಸಲಾಗಿದೆ.</p>
+    </header>
 
-<footer>
-    © <%= new java.util.Date() %> | Built by Nagesh Achar 💻
-</footer>
+    <main>
+        <section>
+            <h2>ಮಹತ್ವದ ಮಾಹಿತಿ</h2>
+            <p>
+                ಕನ್ನಡ ಭಾಷೆಯಲ್ಲಿನ ಈ ವಿಷಯವು ಯೂನಿಕೋಡ್ (UTF-8) ಎನ್‌ಕೋಡಿಂಗ್ ಅನ್ನು ಬಳಸಿಕೊಂಡು ಸರಿಯಾಗಿ ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತಿದೆ.
+                ಯೂನಿಕೋಡ್ ಅನ್ನು ಹೊಂದಿಸುವುದು ಯಾವುದೇ ಭಾರತೀಯ ಭಾಷೆಯ ವೆಬ್‌ಸೈಟ್‌ಗೆ ಅತ್ಯಂತ ಮುಖ್ಯವಾಗಿದೆ.
+            </p>
+        </section>
+
+        <section>
+            <h2>ಇಂದಿನ ದಿನಾಂಕ</h2>
+            <% 
+                java.util.Date now = new java.util.Date();
+                // You would typically use JSTL/Format tags or a custom utility 
+                // for proper Kannada date formatting in a real application.
+            %>
+            <p>
+                ಇಂದಿನ ದಿನಾಂಕ: <%= now.toString() %>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ನಮ್ಮ ಕನ್ನಡ ವೆಬ್‌ಸೈಟ್. ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.</p>
+    </footer>
+
 </body>
 </html>
-
