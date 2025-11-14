@@ -1,62 +1,67 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="kn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <style>
-        /* Ensures a widely-supported font is used for Kannada text */
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;700&display=swap');
-        body {
-            font-family: 'Noto Sans Kannada', sans-serif;
-        }
-    </style>
-    
-    <title>ನಮ್ಮ ಕನ್ನಡ ಜಾಲತಾಣ</title> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+          rel="stylesheet">
+    <link rel="stylesheet" href="<c:url value='/css/style.css'/>"> 
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>Welcome to Our Application</title>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.jsp">ಮುಖಪುಟ (Home)</a></li>
-                <li><a href="about.jsp">ನಮ್ಮ ಬಗ್ಗೆ (About Us)</a></li>
-                <li><a href="contact.jsp">ಸಂಪರ್ಕಿಸಿ (Contact)</a></li>
-            </ul>
-        </nav>
-        <h1>ಸಮೃದ್ಧ ಕನ್ನಡಕ್ಕೆ ಸುಸ್ವಾಗತ</h1>
-        <p>ಜಾವಾ ಸರ್ವರ್ ಪುಟಗಳನ್ನು (JSP) ಬಳಸಿಕೊಂಡು ರಚಿಸಲಾಗಿದೆ.</p>
-    </header>
+    <jsp:include page="/WEB-INF/jspf/header.jsp"/>
 
-    <main>
-        <section>
-            <h2>ಮಹತ್ವದ ಮಾಹಿತಿ</h2>
-            <p>
-                ಕನ್ನಡ ಭಾಷೆಯಲ್ಲಿನ ಈ ವಿಷಯವು ಯೂನಿಕೋಡ್ (UTF-8) ಎನ್‌ಕೋಡಿಂಗ್ ಅನ್ನು ಬಳಸಿಕೊಂಡು ಸರಿಯಾಗಿ ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತಿದೆ.
-                ಯೂನಿಕೋಡ್ ಅನ್ನು ಹೊಂದಿಸುವುದು ಯಾವುದೇ ಭಾರತೀಯ ಭಾಷೆಯ ವೆಬ್‌ಸೈಟ್‌ಗೆ ಅತ್ಯಂತ ಮುಖ್ಯವಾಗಿದೆ.
+    <div class="container mt-5">
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <h1 class="display-5 fw-bold">Welcome, Visitor!</h1>
+            
+            <p class="fs-4">
+                The current time is: <strong>${currentTime}</strong>
             </p>
-        </section>
-
-        <section>
-            <h2>ಇಂದಿನ ದಿನಾಂಕ</h2>
-            <% 
-                java.util.Date now = new java.util.Date();
-                // You would typically use JSTL/Format tags or a custom utility 
-                // for proper Kannada date formatting in a real application.
-            %>
-            <p>
-                ಇಂದಿನ ದಿನಾಂಕ: <%= now.toString() %>
+            <p class="col-md-8 fs-5">
+                This is the main entry point of our application, built with JavaServer Pages (JSP) and adhering to the MVC pattern.
             </p>
-        </section>
-    </main>
+            <a href="<c:url value='/products'/>" class="btn btn-primary btn-lg">
+                View Products
+            </a>
+        </div>
 
-    <footer>
-        <p>&copy; 2025 ನಮ್ಮ ಕನ್ನಡ ವೆಬ್‌ಸೈಟ್. ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.</p>
-    </footer>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Featured Items</h2>
+                <ul class="list-group">
+                    <c:choose>
+                        <c:when test="${not empty items}">
+                            <c:forEach var="item" items="${items}" end="2">
+                                <li class="list-group-item">
+                                    <strong><c:out value="${item.name}"/></strong> 
+                                    - Price: <c:out value="${item.price}"/>
+                                </li>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="list-group-item list-group-item-info">No items found yet.</li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
+            
+            <div class="col-md-6">
+                <h2>Get Started</h2>
+                <p>Register or log in to see personalized content.</p>
+                <a href="<c:url value='/login'/>" class="btn btn-outline-secondary">Login</a>
+                <a href="<c:url value='/register'/>" class="btn btn-success">Register</a>
+            </div>
+        </div>
+    </div>
 
+    <jsp:include page="/WEB-INF/jspf/footer.jsp"/>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
