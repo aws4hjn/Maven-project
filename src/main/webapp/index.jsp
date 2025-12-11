@@ -1,77 +1,84 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Nagesh’s World 🌎</title>
+    <meta charset="UTF-8">
+    <title>Thank You - Micro Degree</title>
+
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #1e90ff, #6a5acd);
             margin: 0;
             padding: 0;
-        }
-        header {
-            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
-            padding: 50px 20px;
         }
-        header h1 {
-            font-size: 48px;
-            margin: 0;
-            letter-spacing: 2px;
-        }
-        header p {
-            font-size: 20px;
-            margin-top: 10px;
-            color: #dcdcdc;
-        }
+
         .container {
-            text-align: center;
-            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.25);
+            backdrop-filter: blur(10px);
+            width: 70%;
         }
-        .btn {
-            background: white;
-            color: #764ba2;
-            border: none;
-            padding: 15px 30px;
-            margin-top: 30px;
-            border-radius: 30px;
-            cursor: pointer;
+
+        h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+            color: #ffeaa7;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 22px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .footer {
+            margin-top: 25px;
             font-size: 18px;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #f5f5f5;
-            transform: scale(1.05);
-        }
-        footer {
-            background: rgba(0, 0, 0, 0.3);
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            color: #ddd;
+            opacity: 0.9;
         }
     </style>
+
 </head>
 <body>
-<header>
-    <h1>Welcome to Nagesh’s DevOps World 🚀</h1>
-    <p>Continuous Integration | Continuous Deployment | Automation | Cloud</p>
-</header>
 
-<div class="container">
-    <h2>Hello, DevOps Enthusiast 👋</h2>
-    <p>This is a simple JSP page deployed on Apache Tomcat using Jenkins CI/CD pipeline.</p>
-    <button class="btn" onclick="alert('Keep Learning, Keep Growing 🌱!')">Click Me</button>
-</div>
+    <div class="container">
+        <h1>Thank You, Micro Degree!</h1>
 
-<footer>
-    © <%= new java.util.Date() %> | Built by Nagesh Achar 💻
-</footer>
+        <h2>By <span class="highlight">H J Nagesh</span></h2>
+
+        <p>
+            Special thanks to <span class="highlight">Kumar Sir</span> and <span class="highlight">Manoj Sir</span>  
+            for the continuous support and guidance.
+        </p>
+
+        <p>
+            I am actively looking for a new role in  
+            <span class="highlight">DevOps and Cloud Platform</span>.  
+            I am ready to join immediately and excited to contribute to real-time projects.
+        </p>
+
+        <div class="footer">
+            "Learning, Growing and Moving Towards My Dream Career."
+        </div>
+    </div>
+
 </body>
 </html>
-
