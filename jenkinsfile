@@ -47,7 +47,6 @@ docker push aws4hjn/nagesh:V3
 '''
 }
 }
-}
 stage('This is image push to ECR'){
 steps{
 script{
@@ -62,4 +61,4 @@ withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws
 }
 }
 }
-
+}
