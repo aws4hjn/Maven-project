@@ -27,7 +27,7 @@ sh "docker build -t hjn ."
 }
 stage('This is container creation stage'){
 steps{
-sh "docker run -d --name hjnC1 -p 8085:8080  hjn " 
+sh "docker run -d --name hjnC1 -p 80:8080  hjn " 
 }
 }
 stage('This is Dockerhub login stage'){
