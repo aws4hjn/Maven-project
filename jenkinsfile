@@ -49,8 +49,8 @@ stage("This is image psh to the aws container registory"){
  withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awscontainer', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
   sh '''
   aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com
-  docker tag jenimage 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com/nagusaws:V2
-  docker push 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com/nagusaws:V2
+  docker tag jenimage 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com/nagus:V2
+  docker push 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com/nagus:V2
   '''
 }
  }
