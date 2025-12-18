@@ -7,7 +7,7 @@ tools{
 stages{
  stage('This is git cloning stage'){
   steps{
-   git branch: 'dev', url:'https://github.com/aws4hjn/Maven-project.git'
+   git branch: 'master', url:'https://github.com/aws4hjn/Maven-project.git'
  }
  }
  stage("This is maven build stage"){
