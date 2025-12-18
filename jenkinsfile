@@ -1,60 +1,64 @@
 pipeline{
 agent any
 tools{
- maven 'mvn'
- jdk 'jdk-17'
+maven 'mvn'
+jdk 'jdk-17'
 }
 stages{
- stage('This is git cloning stage'){
-  steps{
-   git branch: 'main', url:'https://github.com/aws4hjn/Maven-project.git'
- }
- }
- stage("This is maven build stage"){
- steps{
- sh 'mvn clean package'
- }
- }
- stage('This is image build stage'){
- steps{
-  sh 'docker build -t jenimage .'
- }
- }
- stage('This is container creation stage'){
- steps{
- sh 'docker run -d --name nagus -p 8080:80 jenimage'
- }
- }
- stage('This is docker login stage'){
- steps{
- script{
-withCredentials([usernamePassword(credentialsId: 'aws4hjndocker', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-  sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+stage('This is git clone stage'){
+steps{
+ git branch: 'nagesh', url: 'https://github.com/aws4hjn/Maven-project.git'
 }
- }
- }
- }
- stage('This is push to the  dockerhub'){
- steps{
- sh '''
- docker tag jenimage  aws4hjn/nagsimage:V1
- docker push aws4hjn/nagsimage:V1
- '''
- 
- }
- }
- stage("This is image psh to the aws container registory"){
- steps{
- script{
- withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awscontainer', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+}
+stage('This is maven build'){
+steps{
+sh "mvn clean package"
+}
+}
+stage('This is archiving artifacts'){
+steps{
+archiveArtifacts artifacts: "**/*.war", fingerprint: true
+}
+}
+stage("This is image creation stage"){
+steps{
+sh "docker build -t hjn ."
+}
+}
+stage('This is container creation stage'){
+steps{
+sh "docker run -d --name hjnC1 -p 8085:8080  hjn " 
+}
+}
+stage('This is Dockerhub login stage'){
+steps{
+script{
+withCredentials([usernamePassword(credentialsId: 'aws4hjn', usernameVariable:"DOCKER_USERNAME", passwordVariable:"DOCKER_PASSWORD")]) {
+   sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+}
+}
+}
+}
+stage ('This is docker push stage'){
+steps{
+sh '''
+docker tag hjn  aws4hjn/nagesh:V3
+docker push aws4hjn/nagesh:V3
+'''
+}
+}
+}
+stage('This is image push to ECR'){
+steps{
+script{
+withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awscontainer', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
   sh '''
   aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com
-  docker tag jenimage 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com nagus/nagusaws:V2
-  docker push 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com nagus/nagusaws:V2
+  docker tag tbi:V3 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com/tbi:V3
+  docker push 912894834284.dkr.ecr.ap-southeast-1.amazonaws.com/tbi:V3
   '''
 }
- }
- }
- }
+}
+}
 }
 }
