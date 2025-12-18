@@ -39,7 +39,7 @@ withCredentials([usernamePassword(credentialsId: 'aws4hjn', usernameVariable:"DO
 }
 }
 }
-stage ('This is docker push stage'){
+stage('This is docker push stage'){
 steps{
 sh '''
 docker tag hjn  aws4hjn/nagesh:V3
@@ -48,7 +48,7 @@ docker push aws4hjn/nagesh:V3
 }
 }
 }
-stage ('This is image push to ECR'){
+stage('This is image push to ECR'){
 steps{
 script{
 withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awscontainer', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
