@@ -22,7 +22,7 @@ stages{
  }
  stage('This is container creation stage'){
  steps{
- sh 'docker run -it -d --name nagusC2 -p 8082:80 jenimage'
+ sh 'docker run -it -d --name nagusC2 -p 8081:80 jenimage'
  }
  }
  stage('This is docker login stage'){
