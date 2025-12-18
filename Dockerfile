@@ -1,3 +1,3 @@
 FROM tomcat:latest
 COPY target/*.war /usr/local/tomcat/webapps/
-EXPOSE 80
+EXPOSE 8080
